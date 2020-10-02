@@ -19,19 +19,8 @@ from selenium.webdriver.support import expected_conditions as EC
 def screenshot(driver , message):
     if not path.exists("Screenshots"):
         os.mkdir("Screenshots")
-    now = datetime.now()
-    filename = str(now) + "_" + message + ".png"
+    filename = str(datetime.now()) + "_" + message + ".png"
     driver.save_screenshot("./Screenshots/" + filename)
-
-def banner():
-    print("="*50)
-    f = open("Files/Banner.txt")
-    print(f.read())
-    f.close()
-    print("MadeBy: Shubham Arya (ev1l._.m0rty)")
-    print("Contribute: https://github.com/mrjoker05/ImSleepy")
-    print("="*50)
-    print()
 
 def getList(driver ,soup):
     driver.minimize_window()
@@ -123,11 +112,19 @@ def login(driver , username , password):
     final(driver , course_id)
    
 def getCreds():
-    f = open("Files/Creds.txt")
-    creds = f.readlines()
-    username = creds[0].strip()
-    password = creds[1].strip()
-    f.close()
+    try:
+        f = open('Files/Creds.txt')
+        creds = f.readlines()
+        username = creds[0].strip()
+        password = creds[1].strip()
+        f.close()
+    except FileNotFoundError:
+        print('Creds.txt not found')
+        print("Enter your BB email and password: ")
+        username=input()
+        password=input()
+    finally:
+        f.close()    
     return username , password
 
 def dynamic(driver):
@@ -230,7 +227,6 @@ def timer(driver):
         return 1
 
 def main():
-    banner()
     print("[*] Starting up")
     username , password = getCreds()
     user_agent = '--user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.1750.517 Safari/537.36"'

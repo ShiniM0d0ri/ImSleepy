@@ -20,8 +20,10 @@ cls
 echo Downloading chromedriver
 ::curl https://www.7-zip.org/a/7z1900-x64.exe -o 7z.exe
 curl https://chromedriver.storage.googleapis.com/85.0.4183.87/chromedriver_win32.zip -o driver.zip
-7z e driver.zip 
+7z e driver.zip
+del driver.zip 
 echo done
+pause
 
 cls
 :: For setting up

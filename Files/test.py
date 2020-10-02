@@ -1,5 +1,9 @@
 import os
+import string
 
-os.system("copy crontab crontab.bak")
+path=os.getcwd()
+print(path)
+x=path.rfind("\\")
 
-print(1+1)
+path=path[:x]
+print(path)

@@ -1,4 +1,6 @@
 import os
+import string
+
 
 def main():
     final_list = []
@@ -14,9 +16,9 @@ def main():
 
 def setCron(ff):
     # Just to be safe
-    os.system("copy crontab crontab.bak")
-    FILENAME = "crontab"
-    f = open(FILENAME , "a")
+    os.system("copy crontab.bat crontab.bak")
+    FILENAME = "crontab.bat"
+    f = open(FILENAME , "w")
     for i in ff:
         day = i[0]
         hour = i[1]
@@ -28,13 +30,23 @@ def setCron(ff):
     f.close()
 
 def cron(day , hour , duration , course):
-    days = ["monday" , "tuesday" , "wednesday" , "thursday" , "friday" , "saturday"]
-    d = days.index(day)
-    d = d+1
-    user = os.getlogin()
-    command = f" {user} cd ~/ImSleepy python3 ImSleepy.py bg {course} {duration}"
-    cron = f"0  {hour} * * {d} "
-    final = cron + command
-    return final
+    path=getpath()
+    tr="python \\\""+path+"\\IamSleepy.py\\\" bg "+course+" "+duration # command to be added to task
+    tn=course+day+hour # task name (must be unique)
+    intdur=int(duration)
+    if(intdur>100):
+        ET=str(int(hour)+1)+":"+str(intdur-60)
+    else:
+        ET=hour+":"+duration
+    hour=hour+":00"
+    command = f" SCHTASKS /Create /tn {tn} /tr \"{tr}\" /sc weekly /ri 200 /d {day} /st {hour} /et {ET} /K"
+    return command
+
+def getpath():
+    path=os.getcwd()
+    print(path)
+    x=path.rfind("\\")
+    path=path[:x]
+    return path
     
 main()
