@@ -22,6 +22,16 @@ def screenshot(driver , message):
     filename = str(datetime.now()) + "_" + message + ".png"
     driver.save_screenshot("./Screenshots/" + filename)
 
+def banner():
+    print("="*50)
+    f = open("Files/Banner.txt")
+    print(f.read())
+    f.close()
+    print("MadeBy: Shubham Arya (ev1l._.m0rty)")
+    print("Contribute: https://github.com/mrjoker05/ImSleepy")
+    print("="*50)
+    print()
+
 def getList(driver ,soup):
     driver.minimize_window()
     num = 1
@@ -225,6 +235,7 @@ def timer(driver):
         return 1
 
 def main():
+    banner()
     print("[*] Starting up")
     username , password = getCreds()
     user_agent = '--user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.1750.517 Safari/537.36"'

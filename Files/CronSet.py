@@ -19,6 +19,7 @@ def setCron(ff):
     os.system("copy crontab.bat crontab.bak")
     FILENAME = "crontab.bat"
     f = open(FILENAME , "w")
+    f.write("@echo OFF \n")
     for i in ff:
         day = i[0]
         hour = i[1]
@@ -27,6 +28,7 @@ def setCron(ff):
         final = cron(day , hour , duration , course)
         f.write(final)
         f.write("\n")
+    f.write("pause")
     f.close()
 
 def cron(day , hour , duration , course):
@@ -40,7 +42,7 @@ def cron(day , hour , duration , course):
     else:
         ET=hour+":"+duration
     hour=hour+":00"
-    command = f" SCHTASKS /Create /tn {tn} /tr \"{tr}\" /sc weekly /d {day} /st {hour} /et {ET} /K"
+    command = f"SCHTASKS /Create /tn {tn} /tr \"{tr}\" /sc weekly /d {day} /st {hour} /et {ET} /K"
     return command
 
 def getpath():
