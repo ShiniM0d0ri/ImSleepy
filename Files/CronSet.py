@@ -31,7 +31,8 @@ def setCron(ff):
 
 def cron(day , hour , duration , course):
     path=getpath()
-    tr="python \\\""+path+"\\IamSleepy.py\\\" bg "+course+" "+duration # command to be added to task
+    #tr="python \\\""+path+"\\IamSleepy.py\\\" bg "+course+" "+duration # command to be added to task
+    tr="CMD /k cd /d \\\""+path+"\\\" && python IamSleepy.py bg "+course+" "+duration
     tn=course+day+hour # task name (must be unique)
     intdur=int(duration)
     if(intdur>100):
@@ -39,7 +40,7 @@ def cron(day , hour , duration , course):
     else:
         ET=hour+":"+duration
     hour=hour+":00"
-    command = f" SCHTASKS /Create /tn {tn} /tr \"{tr}\" /sc weekly /ri 200 /d {day} /st {hour} /et {ET} /K"
+    command = f" SCHTASKS /Create /tn {tn} /tr \"{tr}\" /sc weekly /d {day} /st {hour} /et {ET} /K"
     return command
 
 def getpath():

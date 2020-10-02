@@ -123,8 +123,6 @@ def getCreds():
         print("Enter your BB email and password: ")
         username=input()
         password=input()
-    finally:
-        f.close()    
     return username , password
 
 def dynamic(driver):
