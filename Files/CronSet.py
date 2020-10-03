@@ -16,6 +16,12 @@ def main():
 
 def setCron(ff):
     # Just to be safe
+    while True:
+        backg=input("Type bg and press enter if you want to run in background mode: ")
+        if backg=="bg" or backg=="":
+            break
+        else:
+            print("Not an valid input !!")
     os.system("copy crontab.bat crontab.bak")
     FILENAME = "crontab.bat"
     f = open(FILENAME , "w")
@@ -25,16 +31,15 @@ def setCron(ff):
         hour = i[1]
         duration = i[2]
         course = i[3]
-        final = cron(day , hour , duration , course)
+        final = cron(day , hour , duration , course, backg)
         f.write(final)
         f.write("\n")
     f.write("pause")
     f.close()
 
-def cron(day , hour , duration , course):
+def cron(day , hour , duration , course,backg):
     path=getpath()
-    #tr="python \\\""+path+"\\IamSleepy.py\\\" bg "+course+" "+duration # command to be added to task
-    tr="CMD /k cd /d \\\""+path+"\\\" && python IamSleepy.py bg "+course+" "+duration
+    tr="CMD /k cd /d \\\""+path+"\\\" && python IamSleepy.py "+backg+" "+course+" "+duration
     tn=course+day+hour # task name (must be unique)
     intdur=int(duration)
     if(intdur>100):

@@ -22,7 +22,9 @@ P.S If you are a faculty and somehow got this I'm sorry :p
 2. You can modify  your BlackBoard creds in the ```Files/Creds.txt``` file.
 
 ## Usage
-1. Syntax ```python3 ImSleepy.py [bg] [Course Number] [Timer]```
+If you want to be more lazier check out [Lazier](https://github.com/ShiniM0d0ri/ImSleepy/blob/master/Files/Lazier.md)
+1. Syntax ```python3 ImSleepy.py [bg] [Course Number] [Timer]``` [Background mode]<br>
+&emsp;&emsp;&emsp; ```python3 ImSleepy.py [Course Number] [Timer]``` [Foreground mode]
 2. Run ```python3 IamSleepy.py``` or click ```StartHere.bat``` to start the program and browser in foreground.
 3. Or Run  ```python3 IamSleepy.py bg``` to start the program in the background.
 4. Enter the class you wanna attend and then sleep ˵◡ ‿ ◡˵
@@ -32,7 +34,7 @@ P.S If you are a faculty and somehow got this I'm sorry :p
 2. Set a timer to automatically close session
 3. Raise hand, Writing to group chat 
 4. Takes screenshots of session ( to prove that it's actually running )
-5. [Add Time Table](https://github.com/mrjoker05/ImSleepy/blob/master/Files/Lazier.md)
+5. [Add Time Table](https://github.com/ShiniM0d0ri/ImSleepy/blob/master/Files/Lazier.md)
 
 ## Testing
 A huge thanks to my friend [Anuj](https://github.com/Shinjiru-stack) for helping me in testing this.
@@ -40,6 +42,4 @@ A huge thanks to my friend [Anuj](https://github.com/Shinjiru-stack) for helping
 This program is still in it's beta dev. stage. 
 <br>
 Will fix errors as soon as I find them
-<br>
-This program was successfully tested on [Parrot GNU/Linux 4.10] [Ubuntu 18.04] [Kali 2020.3]
 <br>
